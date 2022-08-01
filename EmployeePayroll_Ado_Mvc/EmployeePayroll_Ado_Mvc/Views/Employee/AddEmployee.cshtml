@@ -1,0 +1,101 @@
+﻿@model DatabaseLayer.EmployeeModel
+
+@{
+    ViewData["Title"] = "AddEmployee";
+}
+
+<link rel="stylesheet" href="~/css/AddEmployee.css">
+
+ <div class="heading">
+     <img src="~/asserts/Employee LOGO.jpeg" style=" width:52px;height:52px"/>
+     <div>
+         <span style="color: #82A70C">EMPLOYEE</span>
+         <br/>
+         <span style="color: #82A70C">PAYROLL</span>
+     </div>
+</div>
+ <h3 style="text-align: center; font-family:Dubai">AddEmployee</h3>
+<hr />
+<div class="header">
+    <div class="col-md-8">
+        <form asp-action="AddEmployee">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+            <label asp-for="EmployeeId" class="control-label"></label>
+            <input asp-for="EmployeeId" class="form-control" />
+            <span asp-validation-for="EmployeeId" class="text-danger"></span>
+        </div>*@
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group profile">
+
+                <label asp-for="ProfileImage" class="control-label prob"></label>
+                <div class="prof">
+                    @Html.RadioButtonFor(Model => Model.ProfileImage, "~/asserts/Profiles/Female1.jpeg ", new { @class = "space" })
+                    <img class="pro" src="~/asserts/Profiles/Female1.jpeg  " />
+                    @Html.RadioButtonFor(Model => Model.ProfileImage, "~/asserts/Profiles/Female2.jpeg ", new { @class = "space" })
+                    <img class="pro" src="~/asserts/Profiles/Female2.jpeg " />
+                    @Html.RadioButtonFor(Model => Model.ProfileImage, "~/asserts/Profiles/Male1.jpeg ", new { @class = "space" })
+                    <img class="pro" src="~/asserts/Profiles/Male1.jpeg " />
+                    @Html.RadioButtonFor(Model => Model.ProfileImage, "~/asserts/Profiles/Male2.jpeg", new { @class = "space" })
+                    <img class="pro" src="~/asserts/Profiles/Male2.jpeg " />
+                </div>
+            </div>
+            <span asp-validation-for="ProfileImage" class="text-danger"></span>
+            <div class="form-group profile prob">
+                <div>
+                    <label asp-for="Gender" class="control-label gen"></label>
+                </div>
+                <div class="prof">
+                    <input id="Gender" class="pro" asp-for="Gender" name="Gender" value="Male" type="radio" checked>Male
+                    <input id="Gender" class="pro" asp-for="Gender" name="Gender" value="Female" type="radio">Female
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Department" class="control-label"></label>
+                <select asp-for="Department" class="form-control" id="Dep">
+                    <option value="">Choose Department</option>
+                    <option value="HR">HR</option>
+                    <option value="IT Services">IT Services</option>
+                    <option value="Account & Finance">Account & Finance</option>
+                    <option value="Sales & Marketing">Sales & Marketing</option>
+                    <option value="Human Resources">Human Resources</option>
+                    <option value="Product Resources">Product Resources</option>
+                </select>
+                <span asp-validation-for="Department" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Salary" class="control-label"></label>
+                <input asp-for="Salary" class="form-control" />
+                <span asp-validation-for="Salary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="form-group">
+    @*<input type="submit" value="submit" class="btn bttn btn-primary" />*@
+    <a  type="button" class="btn bttn btn-dark" asp-action="ListOfEmployee">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
